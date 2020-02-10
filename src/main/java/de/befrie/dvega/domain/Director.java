@@ -12,15 +12,14 @@ import java.time.Year;
 @Entity
 @Data
 @NoArgsConstructor
-public class Actor {
+public class Director extends Auditable{
 
     @Id
     @GeneratedValue
-    Long id;
+    Long director_id;
 
     @NonNull
     private String lastName;
-
     private String firstName;
     private Year yearOfBirth;
     private Year yearOfDeath;

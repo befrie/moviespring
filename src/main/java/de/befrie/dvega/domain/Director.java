@@ -7,7 +7,10 @@ import lombok.NonNull;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -23,4 +26,7 @@ public class Director extends Auditable{
     private String firstName;
     private Year yearOfBirth;
     private Year yearOfDeath;
+
+    @ManyToMany(mappedBy="directors")
+    private List<Movie> movies = new ArrayList<>();
 }

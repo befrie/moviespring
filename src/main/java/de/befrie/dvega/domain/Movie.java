@@ -19,15 +19,13 @@ public class Movie extends Auditable{
     Long id;
     @NonNull
     private String title;
+    private String imgPath;
     private String description;
+    private String countries;
     private Year yearOfPublication;
 
-    @ManyToMany
-    @JoinTable(name = "movie_actor",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_id")
-    )
-    private List<Actor> actors = new ArrayList<>();
+    @OneToMany(mappedBy = "movie")
+    private List<MovieActor> actors = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "movie_director",

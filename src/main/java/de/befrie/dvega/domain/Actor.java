@@ -4,10 +4,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,7 +16,7 @@ public class Actor extends Auditable{
 
     @Id
     @GeneratedValue
-    Long actor_id;
+    Long director_id;
 
     @NonNull
     private String lastName;
@@ -24,4 +24,7 @@ public class Actor extends Auditable{
     private String firstName;
     private Year yearOfBirth;
     private Year yearOfDeath;
+
+    @OneToMany(mappedBy = "actor")
+    private List<MovieActor> movies;
 }
